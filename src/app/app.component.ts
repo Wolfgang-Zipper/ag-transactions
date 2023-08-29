@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ITransaction } from './models/transaction';
+import {transaction as data} from './data/transactions'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-test';
+  transactionx: ITransaction[] = data
 }

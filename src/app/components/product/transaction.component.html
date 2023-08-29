@@ -1,0 +1,46 @@
+
+<div class="py-6 px-6 border rounded flex item-left flex-col mb-2">
+
+    
+<h2 class="font-bold">Транзакция {{ transact.Model.TransactionId }}</h2>
+<div>
+  <h3>Cумма:</h3>
+  <p>{{ transact.Model.Amount }} {{ transact.Model.Currency }}</p>
+</div>
+<div>
+    <h3>Статус:</h3>
+    <p>{{ transact.Model.Status }}</p>
+  </div>
+
+<div>
+  <h3>Номер заказа:</h3>
+  <p>{{ transact.Model.InvoiceId }}</p>
+</div>
+
+<div>
+  <h3>Идентификатор пользователя:</h3>
+  <p>{{ transact.Model.AccountId }}</p>
+</div>
+
+<div>
+  <h3>Назначение платежа:</h3>
+  <p>{{ transact.Model.Description }}</p>
+</div>
+
+<div>
+  <h3>Дата создания:</h3>
+  <p>{{ transact.Model.CreatedDateIso | date : "d.M.yyyy  hh:mm" }}</p>
+</div>
+
+<div>
+  <h3>Дата авторизации:</h3>
+  <p>{{ transact.Model.AuthDateIso | date : "d.M.yyyy  hh:mm" }}</p>
+</div>
+
+<div>
+  <h3>Дата подтверждения:</h3>
+  <p>{{ transact.Model.ConfirmDateIso | date : "d.M.yyyy  hh:mm" }}</p>
+</div>
+
+
+</div>
