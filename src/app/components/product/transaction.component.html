@@ -1,46 +1,80 @@
-
-<div class="py-6 px-6 border rounded flex item-left flex-col mb-2">
-
-    
-<h2 class="font-bold">Транзакция {{ transact.Model.TransactionId }}</h2>
-<div>
-  <h3>Cумма:</h3>
-  <p>{{ transact.Model.Amount }} {{ transact.Model.Currency }}</p>
-</div>
-<div>
-    <h3>Статус:</h3>
-    <p>{{ transact.Model.Status }}</p>
+<div class="py-6 px-6 border rounded flex item-left flex-row mb-2">
+  <div class="p-3">
+    <h3>Номер:</h3>
+    <p>{{ transaction.Model.TransactionId }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Дата/время:</h3>
+    <p>{{ transaction.Model.CreatedDateIso | date : "d.M.yyyy  hh:mm" }}</p>
   </div>
 
-<div>
-  <h3>Номер заказа:</h3>
-  <p>{{ transact.Model.InvoiceId }}</p>
+  <div class="p-3">
+    <h3>Карта:</h3>
+    <p>
+      {{ transaction.Model.CardType }} {{ transaction.Model.CardFirstSix }}****{{
+        transaction.Model.CardLastFour
+      }}
+    </p>
+  </div>
+
+  <div class="p-3">
+    <h3>Номер заказа:</h3>
+    <p>{{ transaction.Model.InvoiceId }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Cумма:</h3>
+    <p>{{ transaction.Model.Amount }} {{ transaction.Model.Currency }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Статус:</h3>
+    <p>{{ transaction.Model.Status }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Код:</h3>
+    <p>{{ transaction.Model.ReasonCode }}</p>
+  </div>
+  <button
+  class="border rounded py-2 px-4"
+  [ngClass]="{
+    'bg-blue-400': !details,
+    'bg-blue-200': details
+  }"
+  (click)="details = !details"
+>
+  {{ details ? "Скрыть" : "Показать" }} детали транзакции
+</button>
 </div>
 
-<div>
-  <h3>Идентификатор пользователя:</h3>
-  <p>{{ transact.Model.AccountId }}</p>
-</div>
+<div *ngIf="details" class="flex flex-wrap py-6 px-6">
+  <div class="p-3">
+    <h3>Дата авторизации:</h3>
+    <p>{{ transaction.Model.AuthDateIso | date : "d.M.yyyy  hh:mm" }}</p>
+  </div>
 
-<div>
-  <h3>Назначение платежа:</h3>
-  <p>{{ transact.Model.Description }}</p>
-</div>
+  <div class="p-3">
+    <h3>Дата подтверждения:</h3>
+    <p>{{ transaction.Model.ConfirmDateIso | date : "d.M.yyyy  hh:mm" }}</p>
+  </div>
 
-<div>
-  <h3>Дата создания:</h3>
-  <p>{{ transact.Model.CreatedDateIso | date : "d.M.yyyy  hh:mm" }}</p>
-</div>
+  <div class="p-3">
+    <h3>Идентификатор пользователя:</h3>
+    <p>{{ transaction.Model.AccountId }}</p>
+  </div>
 
-<div>
-  <h3>Дата авторизации:</h3>
-  <p>{{ transact.Model.AuthDateIso | date : "d.M.yyyy  hh:mm" }}</p>
-</div>
-
-<div>
-  <h3>Дата подтверждения:</h3>
-  <p>{{ transact.Model.ConfirmDateIso | date : "d.M.yyyy  hh:mm" }}</p>
-</div>
-
-
+  <div class="p-3">
+    <h3>Назначение платежа:</h3>
+    <p>{{ transaction.Model.Description }}</p>
+  </div>
+  <div class="p-3">
+    <h3>IP адрес:</h3>
+    <p>{{ transaction.Model.IpAddress }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Город:</h3>
+    <p>{{ transaction.Model.IpCity }}</p>
+  </div>
+  <div class="p-3">
+    <h3>Адрес сайта:</h3>
+    <p><a [href]="transaction.Model.TerminalUrl"></a></p>
+  </div>
 </div>

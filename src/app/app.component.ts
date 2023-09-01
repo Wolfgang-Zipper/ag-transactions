@@ -8,6 +8,6 @@ import {transaction as data} from './data/transactions'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-test';
-  transactionx: ITransaction[] = data
+  title = 'Список транзакций';
+  transactions: ITransaction[] = data
 }
